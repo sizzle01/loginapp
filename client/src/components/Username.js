@@ -4,33 +4,33 @@ import avatar from '../assets/profile.png';
 import { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik';
 import { usernameValidate } from '../helper/validate'
-// import { useAuthStore } from '../store/store'
+import { useAuthStore } from '../store/store'
 
 import styles from '../styles/Username.module.css';
 
 export default function Username() {
-
-//   const navigate = useNavigate();
-//   const setUsername = useAuthStore(state => state.setUsername);
-
+  const navigate = useNavigate();
+  const setUsername = useAuthStore(state => state.setUsername);
+  
   const formik = useFormik({
     initialValues : {
       username : 'example123'
-    },
+    },  
     validate : usernameValidate,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit : async values => {
-      console.log(values);  
+      setUsername(values.username)
+      console.log(values)
     }
   })
 
-  return (
+  return (  
     <div className="container mx-auto">
 
       <Toaster position='top-center' reverseOrder={false}></Toaster>
 
-      <div className='flex justify-center items-center h-screen'>
+      <div className='flex justify-center items-center '>
         <div className={styles.glass}>
 
           <div className="title flex flex-col items-center">

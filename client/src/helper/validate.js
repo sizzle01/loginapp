@@ -13,8 +13,6 @@ export async function usernameValidate(values){
             errors.exist = toast.error('User does not exist...!')
         }
     }
-
-    return errors;
 }
 
 /** validate password */
